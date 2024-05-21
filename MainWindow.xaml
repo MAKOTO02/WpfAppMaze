@@ -1,0 +1,51 @@
+﻿<Window x:Class="WpfAppMaze.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppMaze"
+        mc:Ignorable="d"
+        Title="Maze Drawer" Height="900" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- メニューバー用の行 -->
+            <RowDefinition Height="25"/>
+            <!-- スライダー用の行 -->
+            <RowDefinition Height="5"/>
+            <!-- セパレータ用の行 -->
+            <RowDefinition Height="*"/>
+            <!-- スクロールビュワー用の行 -->
+        </Grid.RowDefinitions>
+        <Menu VerticalAlignment="Top" Grid.Row="0">
+            <!-- ファイルメニュー -->
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Click="New_Click"/>
+                <MenuItem Header="_Open" Click="Open_Click"/>
+                <Separator/>
+                <MenuItem Header="_Save" Click="SaveAsImage_Click"/>
+                <Separator/>
+                <MenuItem Header="_Exit" Click="Exit_Click"/>
+            </MenuItem>
+
+            <!-- 編集メニュー -->
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Cut" Click="Cut_Click"/>
+                <MenuItem Header="_Copy" Click="Copy_Click"/>
+                <MenuItem Header="_Paste" Click="Paste_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- スライダー -->
+        <Slider Grid.Row="1" Name="ZoomSlider" Minimum="0.5" Maximum="2" Value="1" TickFrequency="0.1" Height="20" Margin="0.5,0.5"/>
+
+        <!-- セパレーター -->
+        <Separator Grid.Row="2" Height="5" Margin="0"/>
+
+        <ScrollViewer Grid.Row="3" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Margin="0,46,0,10">
+            <Canvas Name="MazeCanvas" Background= "White">
+                <!-- 迷路の描画内容はここに追加されます -->
+            </Canvas>
+        </ScrollViewer>
+    </Grid>
+</Window>
